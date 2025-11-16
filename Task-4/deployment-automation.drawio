@@ -1,0 +1,58 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Автоматизация развёртывания" id="deployment-diagram">
+    <mxGraphModel dx="1273" dy="971" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cloud" value="Yandex Cloud" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="50" y="50" width="900" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc" value="VPC Network&#xa;(Terraform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;dashed=1" parent="1" vertex="1">
+          <mxGeometry x="100" y="120" width="800" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="nat" value="NAT Gateway&#xa;(Terraform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=center" parent="1" vertex="1">
+          <mxGeometry x="200" y="200" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="public-subnet" value="Public Subnet&#xa;10.0.1.0/24&#xa;(Terraform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=center" parent="1" vertex="1">
+          <mxGeometry x="400" y="200" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="private-subnet" value="Private Subnet&#xa;10.0.2.0/24&#xa;(Terraform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=center" parent="1" vertex="1">
+          <mxGeometry x="200" y="400" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="disk" value="Disk: 20GB SSD&#xa;(Terraform)" style="shape=cylinder3;size=15;whiteSpace=wrap;html=1;boundedLbl=1;rounded=0;labelBackgroundColor=none;fillColor=#fff2cc;fontSize=12;fontColor=#000000;align=center;strokeColor=#d6b656;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" parent="1" vertex="1">
+          <mxGeometry x="560" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vm" value="VM&#xa;2 vCPU, 4GB RAM&#xa;(Terraform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=center" parent="1" vertex="1">
+          <mxGeometry x="450" y="400" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="manual" value="Приложения и сервисы&#xa;(Развёртываются вручную)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;dashed=1" parent="1" vertex="1">
+          <mxGeometry x="700" y="200" width="180" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-nat-subnet" value="NAT маршрутизация" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1" parent="1" source="nat" target="private-subnet" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-vm-disk" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2" parent="1" source="vm" target="disk" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-vm-subnet" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2" parent="1" source="vm" target="private-subnet" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="120" y="540" width="400" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-terraform" value="Управляется Terraform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="135" y="590" width="155" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-manual" value="Развёртывается вручную" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="320" y="610" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-network" value="Сетевая инфраструктура" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="135" y="640" width="155" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9PyT6WHngpGnOeqAxVou-1" value="Легенда" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="550" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
